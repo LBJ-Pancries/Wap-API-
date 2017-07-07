@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
   def index
-    @cities = City.all
+    @cities = City.all.paginate(:page => params[:page], :per_page => 12)
   end
 
   def update_temp
