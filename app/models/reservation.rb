@@ -4,7 +4,7 @@ class Reservation < ApplicationRecord
 
   belongs_to :train
 
-  before_validation : generate_booking_code, :on => :create
+  before_validation :generate_booking_code, :on => :create
 
   def generate_booking_code
     self.booking_code = SecureRandom.uuid
