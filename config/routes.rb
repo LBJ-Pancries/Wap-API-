@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   namespace :api, :defaults => { :format => :json } do
    namespace :v1 do
 
+     get "/me" => "users#show", :as => :user
+     patch "/me" => "users#update", :as => :update_user
+
      post "/signup" => "auth#signup"
      post "/login" => "auth#login"
      post "logout" => "auth#logout"
-     
+
      get "/reservations" => "reservations#index", :as => :reservations
      get "/trains"  => "trains#index", :as => :trains
      get "/trains/:train_number" => "trains#show", :as => :train
