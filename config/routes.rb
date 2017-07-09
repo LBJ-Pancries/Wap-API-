@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :api, :defaults => { :format => :json } do
    namespace :v1 do
      get "/trains"  => "trains#index", :as => :trains
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
    end
   end
 
-  root 'cities#index'
+  root 'welcome#index'
   resources :cities do
     member do
       post :update_temp

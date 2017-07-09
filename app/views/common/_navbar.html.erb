@@ -6,9 +6,13 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= link_to("登陆", "#") %>
-        </li>
+        <% if current_user %>
+          <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
+          <li><%= link_to('修改密码', edit_registration_path(:user)) %></li>
+        <% else %>
+          <li><%= link_to('注册', new_registration_path(:user)) %></li>
+          <li><%= link_to('登陆', new_session_path(:user))%></li>
+        <% end %>
       </ul>
     </div>
   </div>
